@@ -1,0 +1,24 @@
+{"ForeignBooks" :[
+    {
+    "Title" : "The Alchemist",
+    "Author" : "Paulo Coelho",
+    "Year Published" : 1988,
+    "Country" : "Brazil",
+    "Original Title" : "O Alquimista"
+    },
+    {
+    "Title" : "The Little Prince",
+    "Author" : "Antoine de Saint-Exupery",
+    "Year Published" : 1943,
+    "Country" : "France",
+    "Original Title" : "Le Petit Prince"
+    },
+    {
+    "Title" : "Good Omens",
+    "Author" : "Neil Gaiman, Terry Pratchett",
+    "Year Published" : 1990,
+    "Country" : "England",
+    "Original Title" : "Good Omens"
+    }
+  ]
+}

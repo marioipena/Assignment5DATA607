@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ForeignBooks>
+    <book id="1">
+        <Title>The Alchemist</Title>
+        <Author>Paulo Coelho</Author>
+        <YearPublished>1988</YearPublished>
+        <Country>Brazil</Country>
+        <OriginalTitle>O Alquimista</OriginalTitle>
+    </book>
+    <book id="2">
+        <Title>The Little Prince</Title>
+        <Author>Antoine de Saint-Exupery</Author>
+        <YearPublished>1943</YearPublished>
+        <Country>France</Country>
+        <OriginalTitle>Le Petit Prince</OriginalTitle>
+    </book>
+    <book id="3">
+        <Title>Good Omens</Title>
+        <Author>Neil Gaiman, Terry Pratchett</Author>
+        <YearPublished>1990</YearPublished>
+        <Country>England</Country>
+        <OriginalTitle>Good Omens</OriginalTitle>
+    </book>
+</ForeignBooks>

@@ -1,0 +1,102 @@
+---
+title: "CUNY SPS - Master of Science in Data Science - DATA607"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+  word_document:
+    toc: yes
+    toc_depth: '2'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### Mario Pena
+### 10/13/2019
+
+
+## Assignment 5: Working with XML and JSON in R
+
+
+**Assignment Description: We are to pick three of our favorite books and store 4 to 5 of the books' attributes in 3 different formats, HTML, XML and JSON. We will write R code to load the information from each of the three sources into separate R data frames.**
+
+I have decided to pick 3 foreign books and created a file for each format with the following attributes:
+
+Title, Author, Year Published, Country, Original Title.
+
+I wrote the files using notepad and saved all three files in a github repository, which is where I will be extracting the data from.
+
+## HTML
+
+I first load the libraries that I will be using to extract and parse the HTML file. I used `Rcurl` to facilitate the extraction process from the web, `DT` to create a table and `XML` to read my HTML file:
+
+```{r}
+#load packages
+library(RCurl)
+library(DT)
+library(XML)
+
+#parse file from web
+htmlURL <- getURL("https://raw.githubusercontent.com/marioipena/Assignment5DATA607/master/ForeignBooks.html")
+books_html <- htmlParse(htmlURL)
+
+#create data frame
+books_html_table <- readHTMLTable(books_html, stringsAsFactors = FALSE)
+books_html_table <- books_html_table[[1]]
+
+#view
+datatable(books_html_table)
+
+#structure
+str(books_html_table)
+```
+
+## XML
+
+The libraries that I will be using to extract and parse the XML file are the same as the ones in our previous example. I used `Rcurl` to facilitate the extraction process from the web, `DT` to create a table and `XML` to read my XML file:
+
+```{r}
+xmlURL <- getURL("https://raw.githubusercontent.com/marioipena/Assignment5DATA607/master/ForeignBooks.xml")
+books_xml <- xmlParse(xmlURL)
+
+#create data frame
+books_xml_table <- xmlToDataFrame(books_xml, stringsAsFactors = FALSE)
+
+#view
+datatable(books_xml_table)
+
+#structure
+str(books_xml_table)
+```
+
+## JSON
+
+The libraries that I will be using to extract and parse the JSON file are the same as the ones in our previous example, with the exception of `RJSONIO`. I used `Rcurl` to facilitate the extraction process from the web, `DT` to create a table and `RJSONIO` to read my XML file:
+
+```{r}
+#load package
+library(RJSONIO)
+
+#parse file from web
+jsonURL <- getURL("https://raw.githubusercontent.com/marioipena/Assignment5DATA607/master/ForeignBooks.json")
+books_json <- fromJSON(jsonURL)
+
+#create data frame
+books_json_table <- do.call("rbind", lapply(books_json[[1]], data.frame, stringsAsFactors = FALSE))
+
+#view
+datatable(books_json_table)
+
+#structure
+str(books_json_table)
+```
+
+## Observation
+
+As you can see all three data frames look pretty much identical with a few differences. For the XML file, I had to write "Year Published" and "Original Title" together in order for the file to run properly. Additionally, even though the JSON file allowed me to write "Year Published" and "Original Title" separately and not have any issues when running, when printed here on R, we can see that the space in between was replaced with a dot (.).
+
+Lastly, we can see from looking at the structures of each table that all the fields are read as characters except for "Year Published" in the JSON file, which is read as a number.
+
+
